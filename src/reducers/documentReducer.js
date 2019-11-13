@@ -1,6 +1,6 @@
 import { UPDATE_MARKDOWN } from '../actions/documentActions';
 
-const initialState = {
+export const initialState = {
   markdown: '# Hi there'
 };
 
