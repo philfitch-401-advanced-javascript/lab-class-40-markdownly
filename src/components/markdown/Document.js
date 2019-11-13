@@ -1,26 +1,42 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Preview from './Preview';
 import Editor from './Editor';
 import styles from './Document.css';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getMarkdown } from '../../selectors/documentSelectors';
+import { updateMarkdown } from '../../actions/documentActions';
 
-export default class Document extends PureComponent {
-  state = {
-    markdown: '# Hi there'
-  };
+const Document = ({
+  markdown,
+  handleChange
+}) => {
+  return (
+    <>
+      <div className={styles.Document}>
+        <Editor markdown={markdown} updateMarkdown={handleChange} />
+        <Preview markdown={markdown} />
+      </div>
+    </>
+  );
+};
 
-  updateMarkdown = ({ target }) => {
-    this.setState({ markdown: target.value });
-  };
+Document.propTypes = {
+  markdown: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired
+};
 
-  render() {
-    const { markdown } = this.state;
-    return (
-      <>
-        <div className={styles.Document}>
-          <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
-          <Preview markdown={markdown} />
-        </div>
-      </>
-    );
+const mapStateToProps = state => ({
+  markdown: getMarkdown(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleChange({ target }) {
+    dispatch(updateMarkdown(target.value));
   }
-}
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Document);
