@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './Navigation.css';
 import Tabs from './Tabs';
-import { getFiles, getNewFileName } from '../../selectors/navigationSelectors';
+import { getFiles, getNewFileName, getFileToDelete } from '../../selectors/navigationSelectors';
 import {
   changeActiveDocument,
   setNewFileName,
-  createNewFile
+  setFileToDelete,
+  createNewFile,
+  deleteFile
 } from '../../actions/navigationActions';
 import AddFile from './AddFile';
 import DeleteFile from './DeleteFile';
@@ -38,7 +40,8 @@ Navigation.propTypes = {
 
 const mapStateToProps = state => ({
   files: getFiles(state),
-  newFileName: getNewFileName(state)
+  newFileName: getNewFileName(state),
+  fileToDelete: getFileToDelete(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -46,11 +49,16 @@ const mapDispatchToProps = dispatch => ({
     dispatch(changeActiveDocument(fileName));
   },
   handleChange({ target }) {
-    dispatch(setNewFileName(target.value));
+    if(target.name === 'fileName') dispatch(setNewFileName(target.value));
+    if(target.name === 'fileToDelete') dispatch(setFileToDelete(target.value));
   },
   handleSubmit(event) {
     event.preventDefault();
     dispatch(createNewFile());
+  },
+  handleDeleteSubmit(event) {
+    event.preventDefault();
+    dispatch(deleteFile());
   },
 });
 

@@ -2,6 +2,7 @@ import {
   UPDATE_MARKDOWN, updateMarkdown,
   CREATE_NEW_FILE, createNewFile,
   SET_NEW_FILE_NAME, setNewFileName,
+  SET_FILE_TO_DELETE, setFileToDelete,
   CHANGE_ACTIVE_DOCUMENT, changeActiveDocument
 } from './navigationActions';
 
@@ -21,6 +22,12 @@ describe('navigation actions', () => {
   it('creates a set file name action', () => {
     expect(setNewFileName()).toEqual({
       type: SET_NEW_FILE_NAME
+    });
+  });
+
+  it('creates a set file-name-to-delete action', () => {
+    expect(setFileToDelete()).toEqual({
+      type: SET_FILE_TO_DELETE
     });
   });
 
