@@ -32,6 +32,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleChange({ target }) {
+    console.log(target.value);
     dispatch(updateMarkdown(target.value));
   }
 });
