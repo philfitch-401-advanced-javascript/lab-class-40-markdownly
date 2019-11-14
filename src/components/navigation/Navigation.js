@@ -10,12 +10,14 @@ import {
   createNewFile
 } from '../../actions/navigationActions';
 import AddFile from './AddFile';
+import DeleteFile from './DeleteFile';
 
-const Navigation = ({ files, handleTabSelect, newFileName, handleSubmit, handleChange }) => {
+const Navigation = ({ files, handleTabSelect, newFileName, handleSubmit, handleChange, handleDeleteSubmit, fileToDelete }) => {
   return (
     <>
       <div className={styles.Navigation}>
         <AddFile handleSubmit={handleSubmit} handleChange={handleChange} newFileName={newFileName}/>
+        <DeleteFile handleDeleteSubmit={handleDeleteSubmit} handleChange={handleChange} fileToDelete={fileToDelete} listOfFiles={files}/>
         <Tabs files={files} handleTabSelect={handleTabSelect}/>
       </div>
     </>
@@ -27,7 +29,9 @@ Navigation.propTypes = {
   handleTabSelect: PropTypes.func.isRequired,
   newFileName: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  handleDeleteSubmit: PropTypes.func.isRequired,
+  fileToDelete: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
