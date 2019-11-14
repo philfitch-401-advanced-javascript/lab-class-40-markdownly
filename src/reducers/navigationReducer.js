@@ -2,7 +2,7 @@ import {
   CHANGE_ACTIVE_DOCUMENT,
   CREATE_NEW_FILE,
   SET_NEW_FILE_NAME,
-  SET_FILE_NAME_TO_DELETE,
+  SET_FILE_TO_DELETE,
   UPDATE_MARKDOWN,
   DELETE_FILE
 } from '../actions/navigationActions';
@@ -28,7 +28,7 @@ export default function reducer(state = initialState, action) {
       };
     case SET_NEW_FILE_NAME:
       return { ...state, newFileName: action.payload };
-    case SET_FILE_NAME_TO_DELETE:
+    case SET_FILE_TO_DELETE:
       return { ...state, fileToDelete: action.payload };
     case UPDATE_MARKDOWN:
       return { 

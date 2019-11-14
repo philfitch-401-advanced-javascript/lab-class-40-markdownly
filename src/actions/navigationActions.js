@@ -9,9 +9,9 @@ export const setNewFileName = payload => ({
   payload: payload,
 });
 
-export const SET_FILE_NAME_TO_DELETE = 'SET_FILE_NAME_TO_DELETE';
+export const SET_FILE_TO_DELETE = 'SET_FILE_TO_DELETE';
 export const setFileToDelete = payload => ({
-  type: SET_FILE_NAME_TO_DELETE,
+  type: SET_FILE_TO_DELETE,
   payload: payload
 });
 
