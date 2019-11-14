@@ -3,10 +3,15 @@ export const changeActiveDocument = payload => ({
   type: CHANGE_ACTIVE_DOCUMENT,
   payload: payload
 });
-
 export const SET_NEW_FILE_NAME = 'SET_NEW_FILE_NAME';
 export const setNewFileName = payload => ({
   type: SET_NEW_FILE_NAME,
+  payload: payload
+});
+
+export const SET_TO_DELETE_FILE_NAME = 'SET_TO_DELETE_FILE_NAME';
+export const setToDeleteFileName = payload => ({
+  type: SET_TO_DELETE_FILE_NAME,
   payload: payload
 });
 

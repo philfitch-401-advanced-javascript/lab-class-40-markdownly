@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const AddFile = ({ handleSubmit, handleChange, newFileName }) => {
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
@@ -14,6 +15,18 @@ const AddFile = ({ handleSubmit, handleChange, newFileName }) => {
       />
       <button>+</button>
     </form>
+    <form onSubmit={handleDeleteSubmit}>
+      <input
+        onChange={handleChange}
+        name="toDeleteFileName"
+        type="text"
+        placeholder="File Name to Delete"
+        value={toDeleteFileName}
+        required
+      />
+      <button>+</button>
+    </form>
+    </>
   );
 };
 
@@ -24,3 +37,4 @@ AddFile.propTypes = {
 };
 
 export default AddFile;
+
