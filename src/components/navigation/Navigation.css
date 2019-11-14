@@ -1,8 +1,10 @@
 .Navigation {
   font-family: 'Roboto Mono', monospace;
+  
   ul {
     display: flex;
     padding: 0;
+
     li {
       list-style: none;
       background-color: rgb(131, 131, 252);
@@ -16,4 +18,8 @@
       }
     }
   }
+}
+
+.FileMenu {
+  margin-left: 5px;
 }

@@ -16,9 +16,11 @@ const Navigation = ({ files, handleTabSelect, newFileName, handleSubmit, handleC
   return (
     <>
       <div className={styles.Navigation}>
-        <AddFile handleSubmit={handleSubmit} handleChange={handleChange} newFileName={newFileName}/>
-        <DeleteFile handleDeleteSubmit={handleDeleteSubmit} handleChange={handleChange} fileToDelete={fileToDelete} listOfFiles={files}/>
-        <Tabs files={files} handleTabSelect={handleTabSelect}/>
+        <div className={styles.FileMenu}>
+          <AddFile handleSubmit={handleSubmit} handleChange={handleChange} newFileName={newFileName} />
+          <DeleteFile handleDeleteSubmit={handleDeleteSubmit} handleChange={handleChange} fileToDelete={fileToDelete} files={files} />
+        </div>
+        <Tabs files={files} handleTabSelect={handleTabSelect} />
       </div>
     </>
   );
@@ -31,7 +33,7 @@ Navigation.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleDeleteSubmit: PropTypes.func.isRequired,
-  fileToDelete: PropTypes.func.isRequired,
+  fileToDelete: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
