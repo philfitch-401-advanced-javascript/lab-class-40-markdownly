@@ -1,9 +1,9 @@
 import {
   CHANGE_ACTIVE_DOCUMENT,
   CREATE_NEW_FILE,
-  SET_NEW_FILE_NAME
+  SET_NEW_FILE_NAME,
+  UPDATE_MARKDOWN
 } from '../actions/navigationActions';
-import { UPDATE_MARKDOWN } from '../actions/navigationActions';
 
 export const initialState = {
   files: { 'file1': { markdown: 'your markdown here' } },
