@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 const AddFile = ({ handleSubmit, handleChange, newFileName }) => {
   return (
-    <form onClick={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
         name="fileName"
         type="text"
         placeholder="New File Name"
         value={newFileName}
+        required
       />
       <button>+</button>
     </form>

@@ -20,7 +20,7 @@ export default function reducer(state = initialState, action) {
       return { 
         ...state, 
         activeDocument: action.payload, 
-        files: [...state.files, { fileName: action.payload }] 
+        files: [...state.files, { fileName: state.newFileName }] 
       };
     case SET_NEW_FILE_NAME:
       return { ...state, newFileName: action.payload };

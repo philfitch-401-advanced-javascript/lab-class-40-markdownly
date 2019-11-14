@@ -45,10 +45,13 @@ const mapDispatchToProps = dispatch => ({
     dispatch(changeActiveDocument(target.name));
   },
   handleChange({ target }) {
-    dispatch(setNewFileName(target.name));
+    console.log(target);
+    dispatch(setNewFileName(target.value));
   },
   handleSubmit(event) {
-    dispatch(createNewFile(event));
+    event.preventDefault();
+    console.log(event);
+    dispatch(createNewFile());
   },
 });
 
