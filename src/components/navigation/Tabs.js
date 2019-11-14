@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Tabs = ({ files, handleTabSelect }) => {
-  const tabElements = files.map(file => {
+  const tabElements = Object.values(files).map(file => {
     return (
       <li 
         key={file.id || file.fileName} 
@@ -21,12 +21,7 @@ const Tabs = ({ files, handleTabSelect }) => {
 };
 
 Tabs.propTypes = {
-  files: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      fileName: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
+  files: PropTypes.object.isRequired,
   handleTabSelect: PropTypes.func.isRequired
 };
 

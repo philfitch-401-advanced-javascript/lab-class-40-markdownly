@@ -7,9 +7,9 @@ import {
 // import { updateMarkdown } from '../actions/documentActions';
 
 export const initialState = {
-  files: [
-    { fileName: 'file1', markdown: '' }
-  ],
+  files: {
+    'file1': { fileName: 'file1', markdown: 'goodbye cruel world' }
+  },
   activeDocument: 'file1',
   newFileName: ''
 };
@@ -21,8 +21,8 @@ export default function reducer(state = initialState, action) {
     case CREATE_NEW_FILE:
       return { 
         ...state, 
-        activeDocument: action.payload, 
-        files: [...state.files, { fileName: state.newFileName }] 
+        activeDocument: action.payload,
+        files: { ...state.files, [state.newFileName]: { fileName: state.newFileName, markdown: 'this is a new file' } }
       };
     case SET_NEW_FILE_NAME:
       return { ...state, newFileName: action.payload };

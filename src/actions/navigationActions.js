@@ -11,7 +11,6 @@ export const setNewFileName = payload => ({
 });
 
 export const CREATE_NEW_FILE = 'CREATE_NEW_FILE';
-export const createNewFile = payload => ({
+export const createNewFile = () => ({
   type: CREATE_NEW_FILE,
-  payload: payload
 });

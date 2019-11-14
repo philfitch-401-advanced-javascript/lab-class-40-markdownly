@@ -23,17 +23,18 @@ const Navigation = ({ files, handleTabSelect, newFileName, handleSubmit, handleC
 };
 
 Navigation.propTypes = {
-  files: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      fileName: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
+  files: PropTypes.object.isRequired,
   handleTabSelect: PropTypes.func.isRequired,
   newFileName: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
 };
+
+//   PropTypes.shape({
+//     id: PropTypes.string,
+//     fileName: PropTypes.string.isRequired
+//   }).isRequired
+// ).isRequired,
 
 const mapStateToProps = state => ({
   files: getFiles(state),
@@ -45,12 +46,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(changeActiveDocument(target.name));
   },
   handleChange({ target }) {
-    console.log(target);
+    // console.log(target);
     dispatch(setNewFileName(target.value));
   },
   handleSubmit(event) {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     dispatch(createNewFile());
   },
 });
