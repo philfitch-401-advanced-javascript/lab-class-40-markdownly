@@ -30,12 +30,6 @@ Navigation.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-//   PropTypes.shape({
-//     id: PropTypes.string,
-//     fileName: PropTypes.string.isRequired
-//   }).isRequired
-// ).isRequired,
-
 const mapStateToProps = state => ({
   files: getFiles(state),
   newFileName: getNewFileName(state)
@@ -43,7 +37,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleTabSelect(fileName) {
-    console.log(fileName);
     dispatch(changeActiveDocument(fileName));
   },
   handleChange({ target }) {

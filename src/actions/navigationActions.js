@@ -14,3 +14,9 @@ export const CREATE_NEW_FILE = 'CREATE_NEW_FILE';
 export const createNewFile = () => ({
   type: CREATE_NEW_FILE,
 });
+
+export const UPDATE_MARKDOWN = 'UPDATE_MARKDOWN';
+export const updateMarkdown = payload => ({
+  type: UPDATE_MARKDOWN,
+  payload: payload
+});

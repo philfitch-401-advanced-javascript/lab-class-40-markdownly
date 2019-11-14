@@ -4,8 +4,8 @@ import Editor from './Editor';
 import styles from './Document.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getMarkdown } from '../../selectors/documentSelectors';
-import { updateMarkdown } from '../../actions/documentActions';
+import { getMarkdown } from '../../selectors/navigationSelectors';
+import { updateMarkdown } from '../../actions/navigationActions';
 
 const Document = ({
   markdown,
@@ -32,7 +32,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleChange({ target }) {
-    console.log(target.value);
     dispatch(updateMarkdown(target.value));
   }
 });

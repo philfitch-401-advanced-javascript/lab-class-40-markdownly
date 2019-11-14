@@ -1,9 +1,10 @@
-import { UPDATE_MARKDOWN, updateMarkdown } from './documentActions';
+import { UPDATE_MARKDOWN, updateMarkdown } from './navigationActions';
 
-describe('document actions', () => {
+describe('navigation actions', () => {
   it('creates an update markdown action', () => {
     expect(updateMarkdown()).toEqual({
       type: UPDATE_MARKDOWN
     });
   });
 });
+

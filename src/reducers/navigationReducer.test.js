@@ -1,7 +1,7 @@
-import reducer, { initialState } from './documentReducer';
-import { UPDATE_MARKDOWN, updateMarkdown } from '../actions/documentActions';
+import reducer, { initialState } from './navigationReducer';
+import { UPDATE_MARKDOWN, updateMarkdown } from '../actions/navigationActions';
 
-describe('document reducer', () => {
+describe('navigation reducer', () => {
   it('handles unknown action', () => {
     const newState = reducer(undefined, { type: '@@INIT' });
     expect(newState).toEqual(initialState);
