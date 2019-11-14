@@ -1,16 +1,33 @@
-import { CHANGE_ACTIVE_DOCUMENT } from '../actions/navigationActions';
+import {
+  CHANGE_ACTIVE_DOCUMENT,
+  CREATE_NEW_FILE,
+  SET_NEW_FILE_NAME,
+  UPDATE_MARKDOWN
+} from '../actions/navigationActions';
 
 export const initialState = {
-  files: [
-    { fileName: 'file1' }
-  ],
-  activeDocument: null
+  files: { 'file1': { markdown: 'your markdown here' } },
+  activeDocument: 'file1',
+  newFileName: ''
 };
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case CHANGE_ACTIVE_DOCUMENT:
       return { ...state, activeDocument: action.payload };
+    case CREATE_NEW_FILE:
+      return {
+        ...state,
+        activeDocument: state.newFileName,
+        files: { ...state.files, [state.newFileName]: { markdown: 'this is a new file' } }
+      };
+    case SET_NEW_FILE_NAME:
+      return { ...state, newFileName: action.payload };
+    case UPDATE_MARKDOWN:
+      return { 
+        ...state, 
+        files: { ...state.files, [state.activeDocument]: { markdown: action.payload } } 
+      };
     default:
       return state;
   }
