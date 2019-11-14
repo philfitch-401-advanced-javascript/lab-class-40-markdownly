@@ -8,9 +8,9 @@ const AddFile = ({ handleSubmit, handleChange, newFileName }) => {
         onChange={handleChange}
         name="fileName"
         type="text"
-        placeholder="New File Name">
-        {newFileName}
-      </input>
+        placeholder="New File Name"
+        value={newFileName}
+      />
       <button>+</button>
     </form>
   );
