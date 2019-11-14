@@ -5,11 +5,13 @@ import styles from './Navigation.css';
 import Tabs from './Tabs';
 import { getFiles } from '../../selectors/navigationSelectors';
 import { changeActiveDocument } from '../../actions/navigationActions';
+import AddFile from './AddFile';
 
-const Navigation = ({ files, handleTabSelect }) => {
+const Navigation = ({ files, handleTabSelect, handleClick }) => {
   return (
     <>
       <div className={styles.Navigation}>
+        <AddFile handleSubmit={} handleChange={} newFileName={}/>
         <Tabs files={files} handleTabSelect={handleTabSelect}/>
       </div>
     </>
@@ -23,7 +25,8 @@ Navigation.propTypes = {
       fileName: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  handleTabSelect: PropTypes.func.isRequired
+  handleTabSelect: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
