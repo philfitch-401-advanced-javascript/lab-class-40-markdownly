@@ -3,10 +3,12 @@ import {
   CREATE_NEW_FILE,
   SET_NEW_FILE_NAME
 } from '../actions/navigationActions';
+// import { getMarkdown } from '../selectors/documentSelectors';
+// import { updateMarkdown } from '../actions/documentActions';
 
 export const initialState = {
   files: [
-    { fileName: 'file1' }
+    { fileName: 'file1', markdown: '' }
   ],
   activeDocument: 'file1',
   newFileName: ''
