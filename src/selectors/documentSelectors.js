@@ -1,1 +1,1 @@
-export const getMarkdown = state => state.navigation.files['file1'].markdown;
+export const getMarkdown = state => state.navigation.files[state.navigation.activeDocument].markdown;

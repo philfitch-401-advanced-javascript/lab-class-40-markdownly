@@ -42,16 +42,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleTabSelect({ target }) {
-    dispatch(changeActiveDocument(target.name));
+  handleTabSelect(fileName) {
+    console.log(fileName);
+    dispatch(changeActiveDocument(fileName));
   },
   handleChange({ target }) {
-    // console.log(target);
     dispatch(setNewFileName(target.value));
   },
   handleSubmit(event) {
     event.preventDefault();
-    // console.log(event);
     dispatch(createNewFile());
   },
 });

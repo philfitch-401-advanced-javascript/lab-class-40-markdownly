@@ -7,7 +7,7 @@ const Tabs = ({ files, handleTabSelect }) => {
       <li 
         key={file.id || file.fileName} 
         name={file.fileName} 
-        onClick={handleTabSelect}>
+        onClick={() => handleTabSelect(file.fileName)}>
         {file.fileName}
       </li>
     );
