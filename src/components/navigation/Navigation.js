@@ -6,14 +6,20 @@ import Tabs from './Tabs';
 import { 
   getFiles, 
   getNewFileName, 
-  getFileToDelete 
+  getFileToDelete,
+  getTitleSearchTerm,
+  getFileToOpen,
+  getMatchingFiles 
 } from '../../selectors/navigationSelectors';
 import {
   changeActiveDocument,
   setNewFileName,
   setFileToDelete,
   createNewFile,
-  deleteFile
+  deleteFile,
+  searchFiles,
+  setTitleSearchTerm,
+  setFileToOpen
 } from '../../actions/navigationActions';
 import AddFile from './AddFile';
 import DeleteFile from './DeleteFile';
@@ -76,6 +82,9 @@ const mapStateToProps = state => ({
   files: getFiles(state),
   newFileName: getNewFileName(state),
   fileToDelete: getFileToDelete(state),
+  titleSearchTerm: getTitleSearchTerm(state),
+  fileToOpen: getFileToOpen(state),
+  matchingFiles: getMatchingFiles(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -85,6 +94,8 @@ const mapDispatchToProps = dispatch => ({
   handleChange({ target }) {
     if(target.name === 'fileName') dispatch(setNewFileName(target.value));
     if(target.name === 'fileToDelete') dispatch(setFileToDelete(target.value));
+    if(target.name === 'titleSearchTerm') dispatch(setTitleSearchTerm(target.value));
+    if(target.name === 'fileToOpen') dispatch(setFileToOpen(target.value));
   },
   handleSubmit(event) {
     event.preventDefault();
@@ -94,6 +105,10 @@ const mapDispatchToProps = dispatch => ({
     event.preventDefault();
     dispatch(deleteFile());
   },
+  handleTitleSearch(event) {
+    event.preventDefault();
+    dispatch(searchFiles());
+  }
 });
 
 export default connect(

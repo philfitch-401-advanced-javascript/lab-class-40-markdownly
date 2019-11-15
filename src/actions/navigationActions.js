@@ -30,3 +30,21 @@ export const updateMarkdown = payload => ({
   type: UPDATE_MARKDOWN,
   payload: payload,
 });
+
+export const SEARCH_FILES = 'SEARCH_FILES';
+export const searchFiles = () => ({
+  type: SEARCH_FILES
+});
+
+export const SET_TITLE_SEARCH_TERM = 'SET_TITLE_SEARCH_TERM';
+export const setTitleSearchTerm = payload => ({
+  type: SET_TITLE_SEARCH_TERM,
+  payload
+});
+
+export const SET_FILE_TO_OPEN = 'SET_FILE_TO_OPEN';
+export const setFileToOpen = payload => ({
+  type: SET_FILE_TO_OPEN,
+  payload
+});
+

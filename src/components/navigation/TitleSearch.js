@@ -29,7 +29,7 @@ const TitleSearch = ({
     </form>
     <select
       onChange={handleChange}
-      name="titleSearchResults"
+      name="fileToOpen"
       value={fileToOpen}
     >
       {searchResults}
