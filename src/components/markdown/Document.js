@@ -2,15 +2,15 @@ import React from 'react';
 import Preview from './Preview';
 import Editor from './Editor';
 import styles from './Document.css';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { /*connect,*/ useSelector, useDispatch } from 'react-redux';
 import { getMarkdown } from '../../selectors/navigationSelectors';
 import { updateMarkdown } from '../../actions/navigationActions';
 
-const Document = ({
-  markdown,
-  handleChange
-}) => {
+export default function Document() {
+  const dispatch = useDispatch();
+  const markdown = useSelector(state => getMarkdown(state));
+  const handleChange = ({ target }) => dispatch(updateMarkdown(target.value));
   return (
     <>
       <div className={styles.Document}>
@@ -19,24 +19,38 @@ const Document = ({
       </div>
     </>
   );
-};
+}
 
-Document.propTypes = {
-  markdown: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired
-};
+// const Document = ({
+//   markdown,
+//   handleChange
+// }) => {
+//   return (
+//     <>
+//       <div className={styles.Document}>
+//         <Editor markdown={markdown} updateMarkdown={handleChange} />
+//         <Preview markdown={markdown} />
+//       </div>
+//     </>
+//   );
+// };
 
-const mapStateToProps = state => ({
-  markdown: getMarkdown(state)
-});
+// Document.propTypes = {
+//   markdown: PropTypes.string.isRequired,
+//   handleChange: PropTypes.func.isRequired
+// };
 
-const mapDispatchToProps = dispatch => ({
-  handleChange({ target }) {
-    dispatch(updateMarkdown(target.value));
-  }
-});
+// const mapStateToProps = state => ({
+//   markdown: getMarkdown(state)
+// });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Document);
+// const mapDispatchToProps = dispatch => ({
+//   handleChange({ target }) {
+//     dispatch(updateMarkdown(target.value));
+//   }
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Document);
