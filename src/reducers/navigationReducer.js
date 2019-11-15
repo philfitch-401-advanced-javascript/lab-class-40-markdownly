@@ -15,7 +15,6 @@ export const initialState = {
   newFileName: '',
   fileToDelete: 'file1',
   titleSearchTerm: '',
-  fileToOpen: 'file1',
   matchingFiles: []
 };
 

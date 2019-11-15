@@ -36,7 +36,8 @@ const Navigation = ({
   handleTitleSearch, 
   titleSearchTerm, 
   fileToOpen, 
-  matchingFiles }) => {
+  matchingFiles,
+  handleSearchSelect }) => {
   
   return (
     <>
@@ -55,8 +56,9 @@ const Navigation = ({
             handleTitleSearch={handleTitleSearch} 
             handleChange={handleChange} 
             titleSearchTerm={titleSearchTerm} 
-            fileToOpen={fileToOpen} 
-            matchingFiles={matchingFiles} />
+            matchingFiles={matchingFiles} 
+            handleSearchSelect={handleSearchSelect}
+          />
         </div>
         <Tabs files={files} handleTabSelect={handleTabSelect} />
       </div>
@@ -74,8 +76,8 @@ Navigation.propTypes = {
   fileToDelete: PropTypes.string.isRequired,
   handleTitleSearch: PropTypes.func.isRequired,
   titleSearchTerm: PropTypes.string.isRequired,
-  fileToOpen: PropTypes.string.isRequired,
   matchingFiles: PropTypes.array.isRequired,
+  handleSearchSelect: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -108,6 +110,9 @@ const mapDispatchToProps = dispatch => ({
   handleTitleSearch(event) {
     event.preventDefault();
     dispatch(searchFiles());
+  },
+  handleSearchSelect({ target }) {
+    dispatch(changeActiveDocument(target.value));
   }
 });
 

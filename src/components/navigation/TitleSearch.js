@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-
 const TitleSearch = ({ 
   handleTitleSearch, 
   handleChange, 
   titleSearchTerm, 
-  fileToOpen,
-  matchingFiles }) => {
+  matchingFiles,
+  handleSearchSelect }) => {
 
   const searchResults = matchingFiles.map(file => (
     <option key={file} name="fileToOpen" value={file}>{file}</option>
@@ -28,9 +26,9 @@ const TitleSearch = ({
       <button>Search</button>
     </form>
     <select
-      onChange={handleChange}
+      onChange={handleSearchSelect}
       name="fileToOpen"
-      value={fileToOpen}
+      value=""
     >
       {searchResults}
     </select>
@@ -43,10 +41,9 @@ TitleSearch.propTypes = {
   handleTitleSearch: PropTypes.func.isRequired, 
   handleChange: PropTypes.func.isRequired, 
   titleSearchTerm: PropTypes.string.isRequired, 
-  fileToOpen: PropTypes.string.isRequired,
   searchResults: PropTypes.object,
   matchingFiles: PropTypes.array.isRequired,
-
+  handleSearchSelect: PropTypes.func.isRequired
 };
 
 export default TitleSearch;
