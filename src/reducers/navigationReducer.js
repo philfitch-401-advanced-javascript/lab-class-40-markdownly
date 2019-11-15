@@ -4,7 +4,9 @@ import {
   SET_NEW_FILE_NAME,
   SET_FILE_TO_DELETE,
   UPDATE_MARKDOWN,
-  DELETE_FILE
+  DELETE_FILE,
+  SEARCH_FILES,
+  SET_TITLE_SEARCH_TERM
 } from '../actions/navigationActions';
 
 export const initialState = {
@@ -12,6 +14,8 @@ export const initialState = {
   activeDocument: 'file1',
   newFileName: '',
   fileToDelete: 'file1',
+  titleSearchTerm: '',
+  matchingFiles: []
 };
 
 let newFiles;
@@ -52,6 +56,13 @@ export default function reducer(state = initialState, action) {
         files: newFiles,
         activeDocument: state.activeDocument === state.fileToDelete ? Object.keys(newFiles)[0] : state.activeDocument,
       };
+    case SEARCH_FILES:
+      return { 
+        ...state,
+        matchingFiles: Object.keys(state.files).filter(name => name.includes(state.titleSearchTerm))
+      };
+    case SET_TITLE_SEARCH_TERM:
+      return { ...state,  titleSearchTerm: action.payload };
     default:
       return state;
   }
