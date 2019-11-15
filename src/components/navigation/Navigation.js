@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './Navigation.css';
 import Tabs from './Tabs';
-import { getFiles, getNewFileName, getFileToDelete } from '../../selectors/navigationSelectors';
+import { 
+  getFiles, 
+  getNewFileName, 
+  getFileToDelete 
+} from '../../selectors/navigationSelectors';
 import {
   changeActiveDocument,
   setNewFileName,
@@ -13,14 +17,40 @@ import {
 } from '../../actions/navigationActions';
 import AddFile from './AddFile';
 import DeleteFile from './DeleteFile';
+import TitleSearch from './TitleSearch';
 
-const Navigation = ({ files, handleTabSelect, newFileName, handleSubmit, handleChange, handleDeleteSubmit, fileToDelete }) => {
+const Navigation = ({ 
+  files, 
+  handleTabSelect, 
+  newFileName, 
+  handleSubmit, 
+  handleChange, 
+  handleDeleteSubmit, 
+  fileToDelete, 
+  handleTitleSearch, 
+  titleSearchTerm, 
+  fileToOpen, 
+  matchingFiles }) => {
+  
   return (
     <>
       <div className={styles.Navigation}>
         <div className={styles.FileMenu}>
-          <AddFile handleSubmit={handleSubmit} handleChange={handleChange} newFileName={newFileName} />
-          <DeleteFile handleDeleteSubmit={handleDeleteSubmit} handleChange={handleChange} fileToDelete={fileToDelete} files={files} />
+          <AddFile 
+            handleSubmit={handleSubmit} 
+            handleChange={handleChange} 
+            newFileName={newFileName} />
+          <DeleteFile 
+            handleDeleteSubmit={handleDeleteSubmit} 
+            handleChange={handleChange} 
+            fileToDelete={fileToDelete} 
+            files={files} />
+          <TitleSearch 
+            handleTitleSearch={handleTitleSearch} 
+            handleChange={handleChange} 
+            titleSearchTerm={titleSearchTerm} 
+            fileToOpen={fileToOpen} 
+            matchingFiles={matchingFiles} />
         </div>
         <Tabs files={files} handleTabSelect={handleTabSelect} />
       </div>
@@ -36,6 +66,10 @@ Navigation.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleDeleteSubmit: PropTypes.func.isRequired,
   fileToDelete: PropTypes.string.isRequired,
+  handleTitleSearch: PropTypes.func.isRequired,
+  titleSearchTerm: PropTypes.string.isRequired,
+  fileToOpen: PropTypes.string.isRequired,
+  matchingFiles: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
